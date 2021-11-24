@@ -34,7 +34,7 @@ commands = {
 	approach: (boyName) => {
         //make sure exists
         if (boy[boyName]) {
-            boy[boyName](boyName);
+            boy[boyName]();
         } else {
             promptUser("Please choose one of the valid options\n")
         }
@@ -66,7 +66,7 @@ location = {
         printMsg("\nYou are now in the hallway, to your right is the bathroom.\nIn the end of the hallway you see a chemistry room, and the door is ajar.\nYou spot a calm, slim figure walking up ahead. There is sweat on his brow, and he seems to be looking for something. \nDo you want to approach him?");
 
         //prompt user for anwser
-        promptUser("\nOptions: go bathroom, Approach him, go chemlab, go gym \n\n")
+        promptUser("\nOptions: go bathroom, Approach calm-guy, go chemlab, go gym \n\n")
     },
     chemlab: () => {
         //send msg
@@ -91,7 +91,7 @@ location = {
     bathroom: () => {
         printMsg("\nYou walk into the bathroom, so you can wash your hands and check your face. \nHave to make sure you look your best when searching for a future partner. \nYou walk in and encounter two high school boys. \nThey are both tall but one has brown curly hair with the complexion of an angel. \nThe other has spiky hair and a visage of pure anger. \nThe two students from Aoba Johsai are bickering:\n\n“Shittykawa, stop looking at yourself in the mirror!”\n\n“Silly Iwa-chan, perfection takes time!”\n\nYou overhear part of their conversation, but they stop abruptly when you walk in. \nThey turn and look at you. \nWhat do you do?");
 
-        promptUser("\nOptions: Approach angel, approach other, leave bathroom\n\n");
+        promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
     },
     bathroomExit: () => {
         return ["hallway", "gym", "bathroom"]
@@ -100,52 +100,52 @@ location = {
 
 //store boy objects
 boy = {
-	redhead: (boyName) => {
+	redhead: () => {
 		printMsg("\nHI THERE I'M HINATA SHOYO. I LOVE VOLLEYBALL…..do YOUUU like volleyball?");
 
-		promptUserBoyQuest("\nOptions: i LOVE volleyball, volleyball is for sweaty jocks, meh\n\n", boyName);
+		promptUserBoyQuest("\nOptions: i LOVE volleyball, volleyball is for sweaty jocks, meh\n\n", "hinata");
 	},
-    "blue-eyes": (boyName) => {
+    "blue-eyes": () => {
         printMsg("...\nHe walks away. How do you respond?\n\n");
 
         //record blue eye interaction
-        boyMeetings[boyName] = true;
+        boyMeetings["blue-eyes"] = true;
         promptUser("Options: Leave gym, approach redhead, approach blue-eyes\n\n");
     },
-    him: (boyName) => {
-        printMsg("Uhh hi. Have you seen a tall, spiky grey haired man at all? I’ve been looking all over.");
+    "calm-guy": () => {
+        printMsg("Uhh hi. I'm Akaashi, have you seen a tall, spiky grey haired man at all? I’ve been looking all over.");
 
-        promptUserBoyQuest("\nOptions: who is that?, yea he's in the dining hall, I think I saw him in the lounge, I am not going to tell you, he's in the chem lab\n\n", boyName);
+        promptUserBoyQuest("\nOptions: who is that?, yea he's in the dining hall, I think I saw him in the lounge, I am not going to tell you, he's in the chem lab\n\n", "akaashi");
     },
-    nerd: (boyName) => {
+    nerd: () => {
         printMsg("OH HI, I’m Kuroo! Now aren’t you pretty, but not as pretty as this periodic table. My favorite element is bromine, what is yours?");
 
-        promptUserBoyQuest("\Options: Chemistry is gross, Argon of course, gold because I’m expensive\n\n", boyName)
+        promptUserBoyQuest("\Options: Chemistry is gross, Argon of course, gold because I’m expensive\n\n", "kuroo")
     },
-    "grey-hairs": (boyName) => {
-        printMsg("Oh hello. Sorry you had to witness my idiot brother. I wanted him to try my onigiri, but he got distracted by the tuna. Would you like to try my onigiri?");
+    "grey-hairs": () => {
+        printMsg("Oh hello. My name's Osamu, and sorry you had to witness my idiot brother. I wanted him to try my onigiri, but he got distracted by the tuna. Would you like to try my onigiri?");
 
-        promptUserBoyQuest("\nOptions: Eww of course not, your brother is kind of cute, I would love some, I love onigiri but I don't trust your cooking\n\n", boyName);
+        promptUserBoyQuest("\nOptions: Eww of course not, your brother is kind of cute, I would love some, I love onigiri but I don't trust your cooking\n\n", "osamu");
     },
-    blondy: (boyName) => {
-        printMsg("Oh who are you? If you want some of my fatty tuna, then you can’t have it!");
+    blondy: () => {
+        printMsg("Oh who are you? I am Atsumu, and if you want some of my fatty tuna, then you can’t have it!");
 
-        promptUserBoyQuest("\nOptions: Fatty tuna is disgusting, I want more than just your fatty tuna, I like your hair\n\n", boyName);
+        promptUserBoyQuest("\nOptions: Fatty tuna is disgusting, I want more than just your fatty tuna, I like your hair\n\n", "atsumu");
     },
-    "muscle-man": (boyName) => {
-        printMsg("HEY HEY HEY! Can you help me shake this vending machine, my candy bar is stuck and I AM STARVING!");
+    "muscle-man": () => {
+        printMsg("HEY HEY HEY! I am Bokuto, and can you help me shake this vending machine, my candy bar is stuck and I AM STARVING!");
 
-        promptUserBoyQuest("\nOptions: Of course LETS DO THIS, if you are hungry then go to the cafeteria, sure\n\n", boyName);
+        promptUserBoyQuest("\nOptions: Of course LETS DO THIS, if you are hungry then go to the cafeteria, sure\n\n", "bokuto");
     },
-    angel: (boyName) => {
+    angel: () => {
         printMsg("Looks like we got a guest Iwa-chan. Hi there, people call me Oikawa, but you can call me tonight;)");
 
-        promptUserBoyQuest("\nOptions: Eww what, I thought they called you Shittykawa, I will be looking forward to it\n\n", boyName);
+        promptUserBoyQuest("\nOptions: Eww what, I thought they called you Shittykawa, I will be looking forward to it\n\n", "oikawa");
     },
-    other: (boyName) => {
+    "angels-friend": () => {
         printMsg("Hello I-\n*The angel pushes his friend off to the side*\n“HIIII I’M OIKAWA. You must be a fan...I’ll give you my autograph if you want, but you’ll have to get on your knees and beg”");
 
-        promptUserBoyQuest("\nOptions: Anything you say...master, you are so full of yourself *slaps him*, in your wildest dreams\n\n", boyName);
+        promptUserBoyQuest("\nOptions: Anything you say...master, you are so full of yourself *slaps him*, in your wildest dreams\n\n", "iwaizumi");
     }
 }
 
@@ -163,7 +163,7 @@ correctResp = {
 
         boyRatings[boyName] = 1;
 
-		promptUser("\nOptions: go bathroom, Approach him, go chemlab, go gym\n\n");
+		promptUser("\nOptions: go bathroom, Approach calm-guy, go chemlab, go gym\n\n");
     },
     "argon of course": (boyName) => {
         printMsg("WOAHHH You must be very NOBLE;)\n\nThe boy smiles and walks away. What do you want to do now?");
@@ -198,84 +198,84 @@ correctResp = {
 
         boyRatings[boyName] = 1;
 
-        promptUser("\nOptions: Approach angel, approach other, leave bathroom\n\n");
+        promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
     },
     "anything you say...master": (boyName) => {
         printMsg("Woah woah...I think my nose bleeding.\n\nHe turns back to the mirror. What do you want to do?")
 
         boyRatings[boyName] = 1;
 
-        promptUser("\nOptions: Approach angel, approach other, leave bathroom\n\n");
+        promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
     }
 }
 
 incorrectResp = {
-	 redhead: () => {
+	hinata: () => {
 		 printMsg("oh ok.\n\nThe boy walks away slowly, while shedding a tear. Now what do you want to do?");
 
 		 promptUser("\nOptions: Leave gym, approach redhead, approach blue-eyes\n\n");
 	 },
-     him: () => {
+     akaashi: () => {
          printMsg("*sigh* okay whatever. I gotta go.\n\nThe boy walks off. Where do you want to go?");
 
-         promptUser("\nOptions: go bathroom, Approach him, go chemlab, go gym\n\n");
+         promptUser("\nOptions: go bathroom, Approach calm-guy, go chemlab, go gym\n\n");
      },
-     nerd: () => {
+     kuroo: () => {
          printMsg("Interesting. Well I'm going to get back to my periodic table.\n\nThe boy turns away. How do you respond?")
 
          promptUser("\nOptions: approach gamer, approach nerd, leave chemlab\n\n");
      },
-     "grey-hairs": () => {
+     osamu: () => {
          printMsg("oh fine.\n\nThe boy lowers his head and walks away. What do you do?");
 
          promptUser("\nOptions: Approach blondy, approach grey-hairs, leave cafeteria, go lounge, go chemlab\n\n");
      },
-     blondy: () => {
+     atsumu: () => {
          printMsg("The boy rolls his eyes at you, and walks away. How do you respond?");
 
          promptUser("\nOptions: Approach blondy, approach grey-hairs, leave cafeteria, go lounge, go chemlab\n\n");
      },
-     "muscle-man": () => {
+     bokuto: () => {
          printMsg("oh sorry to bother you.\n\nThe boy's hair droops and his eyes sadden, as he walks away. What do you do?");
 
          promptUser("\nOptions: Approach muscle-man, leave lounge\n\n");
      }, 
-     angel: () => {
+     oikawa: () => {
          printMsg("Oikawa shrugs, and turns back to the mirror. What do you want to do?")
 
-         promptUser("\nOptions: Approach angel, approach other, leave bathroom\n\n");
+         promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
      },
-     other: () => {
+     iwaizumi: () => {
          printMsg("You are kinda mean, but you can not replace my Iwa-chan! \n\n He turns away. Where do you want to go next?");
 
-         promptUser("\nOptions: Approach angel, approach other, leave bathroom\n\n");
+         promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
      }
 }
 
 //store boys and their raitings
 boyRatings = {
-    redhead: 0,
+    hinata: 0,
     "blue-eyes": 0,
-    him: 0,
-    nerd: 0,
-    "grey-hairs": 0,
-    blondy: 0,
-    "muscle-man": 0,
-    angel: 0,
-    other: 0
+    akaashi: 0,
+    kuroo: 0,
+    osamu: 0,
+    atsumu: 0,
+    bokuto: 0,
+    oikawa: 0,
+    iwaizumi: 0
 }
 
 //store if you have met all the boys
 boyMeetings = {
-    redhead: false,
+    hinata: false,
     "blue-eyes": false,
-    him: false,
-    nerd: false,
-    "grey-hairs": false,
-    blondy: false,
-    "muscle-man": false,
-    angel: false,
-    other: false,
+    akaashi: false,
+    kuroo: false,
+    osamu: false,
+    atsumu: false,
+    bokuto: false,
+    oikawa: false,
+    iwaizumi: false
 }
 
 //print msg function to user
@@ -286,18 +286,28 @@ function printMsg(str) {
 //prompt user function
 function promptUser(Userquestion) {
     rl.question(Userquestion, (resp) => {
-        //quickly clean resp
-        resp = resp.toLowerCase();
+        //check if you have met all boys
+        if (Object.values(boyMeetings).every(Boolean) !== false) {
+            console.log("you've met all the boys")
 
-        //get verb and subject
-        let verb = resp.split(" ")[0];
-        let subject = resp.split(" ")[1];
+            //give user opportunity to rank
+            printMsg("Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?")
 
-        //call command if exist
-        if (commands[verb]) {
-            commands[verb](subject);
+            promptUser("Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi\n\n")
         } else {
-            promptUser("Please choose one of the valid options\n")
+            //quickly clean resp
+            resp = resp.toLowerCase();
+
+            //get verb and subject
+            let verb = resp.split(" ")[0];
+            let subject = resp.split(" ")[1];
+
+            //call command if exist
+            if (commands[verb]) {
+                commands[verb](subject);
+            } else {
+                promptUser("Please choose one of the valid options\n")
+            }
         }
     });
 }
@@ -305,27 +315,35 @@ function promptUser(Userquestion) {
 //prompt user the boy's message
 function promptUserBoyQuest(Userquestion, boyName) {
 	rl.question(Userquestion, (resp) => {
-		//quickly clean resp
-		resp = resp.toLowerCase();
-
-		//check resp with correct anwsers
-		if (correctResp[resp]) {
-			//if resp correct then play characters good resp
-			correctResp[resp](boyName)
-            console.log(boyRatings)
-		} else {
-			incorrectResp[boyName]()
-		}
-
-        //no matter what record boy meeting
-        boyMeetings[boyName] = true;
-        
         //check if you have met all boys
-        if (Object.values(boyMeetings).every(item => item === true) {
+        if (Object.values(boyMeetings).every(Boolean) !== false) {
             console.log("you've met all the boys")
+
+            //give user opportunity to rank
+            printMsg("Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?")
+
+            promptUser("Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi\n\n")
+        } else {
+            //quickly clean resp
+            resp = resp.toLowerCase();
+            console.log(boyName)
+            
+            //check resp with correct anwsers
+            if (correctResp[resp]) {
+			    //if resp correct then play characters good resp
+			    correctResp[resp](boyName)
+                console.log(boyRatings)
+		    } else {
+			    incorrectResp[boyName]()
+		    }
+
+            //no matter what record boy meeting
+            boyMeetings[boyName] = true;
         }
 	});
 }
+
+
 
 //start game with opening
 printMsg("The prom is coming in 2 weeks, now you desperately need to find someone to accompany you. A tournament at Nekoma High just ended. Aoba Johsai High, Inarizaki High, Fukurodani  Academy, and Karasuno High were invited. \nAfter watching the tournament, you decided to find the #1 prom mate among all the boys.\n\nYOU SEARCH THEM OUT.\n")
