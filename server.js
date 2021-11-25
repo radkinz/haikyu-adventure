@@ -38,7 +38,23 @@ commands = {
         } else {
             promptUser("Please choose one of the valid options\n")
         }
-	}
+	},
+
+    ask: (boyName) => {
+        //make sure exists 
+        boyName = boyName.toLowerCase();
+        if (boyRatings[boyName] !== undefined) {
+            if (boyRatings[boyName] > 0) {
+                //get good ending
+                goodEndings[boyName]();
+            } else {
+                //get bad ending
+                badEndings[boyName]();
+            }
+        } else {
+            promptUserFinalBoyQuest("Please choose one of the valid options\n")
+        }
+    }
 }
 
 //store location objects
@@ -203,7 +219,14 @@ correctResp = {
     "anything you say...master": (boyName) => {
         printMsg("Woah woah...I think my nose bleeding.\n\nHe turns back to the mirror. What do you want to do?")
 
-        boyRatings[boyName] = 1;
+        boyRatings["oikawa"] = 1;
+
+        promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
+    },
+    "in your wildest dreams": (boyName) => {
+        printMsg("Oikawa shrugs, and turns back to the mirror. What do you want to do?")
+
+        boyRatings["oikawa"] = 1;
 
         promptUser("\nOptions: Approach angel, approach angels-friend, leave bathroom\n\n");
     }
@@ -252,6 +275,110 @@ incorrectResp = {
      }
 }
 
+//store endings
+goodEndings = {
+    hinata: () => {
+        printMsg("OHH I would LOVE to accompany you to the prom, as long as we can play volleyball after the dance!");
+
+        //call end game function
+        endGame("Hinata")
+    },
+    akaashi: () => {
+        printMsg("Hmm I don't mind attending with you. You're really nice, so I'm sure it will be a lot of fun.");
+
+        endGame("Akaashi");
+    },
+    kuroo: () => {
+        printMsg("OMG OF COURSE! I AM SO GLAD YOU ASKED! I WOULD LOVE TO ACCOMPANY YOU;)");
+
+        endGame("Kuroo");
+    },
+    osamu: () => {
+        printMsg("Sounds like fun! I'll make onigiri for us to eat beforehand.");
+
+        endGame("Osamu");
+    },
+    atsumu: () => {
+        printMsg("Sure pretty thang;)");
+
+        endGame("Atsumu");
+    },
+    bokuto: () => {
+        printMsg("OMG OMG OMG YOU REALLY WANT TO GO WITH ME?!?!?! HOW COULD I NOT SAY NO? YES YES YES YESSSSS!!!!");
+
+        endGame("Bokuto");
+    },
+    oikawa: () => {
+        printMsg("Can't say I wasn't expecting this, but sure. You look like you could be some fun, but remenber no pictures can include my bad side. JK I have no bad side;)");
+
+        endGame("Oikawa");
+    },
+    iwaizumi: () => {
+        printMsg("Sure, I need some time away from Shittykawa.");
+
+        endGame("Iwaizumi");
+    }
+}
+
+//store bad endings
+badEndings = {
+    hinata: () => {
+        printMsg("Sorry I can't make it. I'll be playing volleyball.");
+
+        //call end game function
+        endGame("nobody")
+    },
+    "blue-eyes": () => {
+        printMsg("...");
+
+        endGame("nobody");
+    },
+    akaashi: () => {
+        printMsg("Thanks for asking, but I am unable to attend.");
+
+        endGame("nobody");
+    },
+    kuroo: () => {
+        printMsg("Oh shoot! I already planned to do an acid-base titration that day. Bummer!");
+
+        endGame("nobody");
+    },
+    osamu: () => {
+        printMsg("I am flattered, but no.");
+
+        endGame("nobody");
+    },
+    atsumu: () => {
+        printMsg("BAHAHAHA you think I would go to prom with you?! Never in a million years!");
+
+        endGame("nobody");
+    },
+    bokuto: () => {
+        printMsg("I- Uh I- Uh I can't go. Sorry! I have to take care of my owl.");
+
+        endGame("nobody");
+    },
+    oikawa: () => {
+        printMsg("Hmmm okay, as long as we can bring Iwa-chan as well!!");
+
+        endGame("nobody");
+    },
+    iwaizumi: () => {
+        printMsg("No.");
+
+        endGame("nobody");
+    }
+}
+
+
+//end game
+function endGame(name) {
+    printMsg(`Congratulations you ended with ${name}.\n\nTHE END.`);
+
+    //close user input
+    rl.close();
+}
+
 //store boys and their raitings
 boyRatings = {
     hinata: 0,
@@ -275,7 +402,7 @@ boyMeetings = {
     atsumu: false,
     bokuto: false,
     oikawa: false,
-    iwaizumi: false
+    iwaizumi: false,
 }
 
 //print msg function to user
@@ -293,7 +420,7 @@ function promptUser(Userquestion) {
             //give user opportunity to rank
             printMsg("Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?")
 
-            promptUser("Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi\n\n")
+            promptUserFinalBoyQuest("Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi\n\n")
         } else {
             //quickly clean resp
             resp = resp.toLowerCase();
@@ -312,6 +439,25 @@ function promptUser(Userquestion) {
     });
 }
 
+//pick boy prompt
+function promptUserFinalBoyQuest(Userquestion) {
+    rl.question(Userquestion, (resp) => {
+        //quickly clean resp
+        resp = resp.toLowerCase();
+
+        //get verb and subject
+        let verb = resp.split(" ")[0];
+        let subject = resp.split(" ")[1];
+
+        //call command if exist
+        if (commands[verb]) {
+            commands[verb](subject);
+        } else {
+            promptUser("Please choose one of the valid options\n")
+        }
+    });
+}
+
 //prompt user the boy's message
 function promptUserBoyQuest(Userquestion, boyName) {
 	rl.question(Userquestion, (resp) => {
@@ -326,13 +472,11 @@ function promptUserBoyQuest(Userquestion, boyName) {
         } else {
             //quickly clean resp
             resp = resp.toLowerCase();
-            console.log(boyName)
             
             //check resp with correct anwsers
             if (correctResp[resp]) {
 			    //if resp correct then play characters good resp
 			    correctResp[resp](boyName)
-                console.log(boyRatings)
 		    } else {
 			    incorrectResp[boyName]()
 		    }
