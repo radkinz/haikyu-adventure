@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Outfit:wght@300;400;500&display=swap');
+
 html {
     background-color: black;
     margin: 0;
 }
 
+h1 {
+    font-family: 'Fjalla One', sans-serif;
+    color: #f49030;
+    font-size: 50px;
+}
+
 #messages {
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 200px;
+    max-height: 200px;
     overflow-y: auto;
-    background-color: rgb(255, 199, 125);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
 }
