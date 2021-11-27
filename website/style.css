@@ -12,10 +12,19 @@ h1 {
 }
 
 #messages {
-    min-height: 200px;
-    max-height: 200px;
-    overflow-y: auto;
     color: white;
     font-family: 'Outfit', sans-serif;
     font-size: 20px;
+    width: 50%;
+    overflow-x: break-word;
+}
+
+#options {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25%;
+    min-height: 100px;
+    max-height: 100px;
 }
