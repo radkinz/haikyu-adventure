@@ -4,10 +4,10 @@ const commands = {
     //make sure location exist
     if (Gamelocation[locationName + 'Exit']) {
       //get location exits
-      let exits = Gamelocation[locationName + 'Exit']();
+      let exits = Gamelocation[locationName + 'Exit']()
 
       //clear msg
-      clearMsg();
+      clearMsg()
 
       //ask user which exit
       printMsg(
@@ -59,13 +59,48 @@ const commands = {
     } else {
       printMsg('Please choose one of the valid options<br>')
     }
+  }, 
+
+  start: () => {
+    //reset values
+    boyRatings = {
+      hinata: 0,
+      'blue-eyes': 0,
+      akaashi: 0,
+      kuroo: 0,
+      osamu: 0,
+      atsumu: 0,
+      bokuto: 0,
+      oikawa: 0,
+      iwaizumi: 0
+    }
+    
+    boyMeetings = {
+      redhead: false,
+      'blue-eyes': false,
+      'calm-guy': false,
+      nerd: false,
+      'grey-hairs': false,
+      blondy: false,
+      'muscle-man': false,
+      angel: false,
+      'angels-friend': false
+    }
+
+    console.log("hello")
+    Gamelocation.gym();
+  },
+
+  new: () => {
+    clearMsg();
+    startGame();
   }
 }
 
 //store location objects
 const Gamelocation = {
   gym: function () {
-    clearMsg();
+    clearMsg()
 
     //send msg
     printMsg(
@@ -79,7 +114,7 @@ const Gamelocation = {
     return ['a hallway', 'the student lounge', 'gym']
   },
   lounge: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'You walk down a hallway and approach the student lounge door. You reach for the handle but hear some noises coming from inside. <br><br> *Bang* *Bang* <br><br> The sound of someone banging on metal rattles through your ears. You take a deep breath, and walk inside. You encounter a tall, thick male, who has golden-colored eyes and spiky white-grey hair with black streaks. He is banging on the vending machine with a look of despair washed over his face. It appears his candy bar is stuck, and he is trying to forcefully remove it. What do you want to do?<br>'
@@ -91,7 +126,7 @@ const Gamelocation = {
     return ['the cafeteria', 'the gym', 'the student lounge']
   },
   hallway: () => {
-    clearMsg();
+    clearMsg()
 
     //send msg
     printMsg(
@@ -104,7 +139,7 @@ const Gamelocation = {
     )
   },
   chemlab: () => {
-    clearMsg();
+    clearMsg()
 
     //send msg
     printMsg(
@@ -118,7 +153,7 @@ const Gamelocation = {
     return ['a hallway', 'the cafeteria', 'chemlab']
   },
   cafeteria: () => {
-    clearMsg();
+    clearMsg()
 
     //send msg
     printMsg(
@@ -134,7 +169,7 @@ const Gamelocation = {
     return ['lounge', 'chemlab', 'cafeteria']
   },
   bathroom: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'You walk into the bathroom, so you can wash your hands and check your face. Have to make sure you look your best when searching for a future partner. You walk in and encounter two high school boys. They are both tall but one has brown curly hair with the complexion of an angel. The other has spiky hair and a visage of pure anger. The two students from Aoba Johsai are bickering:<br><br>“Shittykawa, stop looking at yourself in the mirror!”<br>“Silly Iwa-chan, perfection takes time!”<br><br>You overhear part of their conversation, but they stop abruptly when you walk in. They turn and look at you. What do you do?'
@@ -152,7 +187,7 @@ const Gamelocation = {
 //store boy objects
 const boy = {
   redhead: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       "HI THERE I'M HINATA SHOYO. I LOVE VOLLEYBALL…..do YOUUU like volleyball?"
@@ -163,16 +198,16 @@ const boy = {
     )
   },
   'blue-eyes': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg('... <br> He walks away. How do you respond?')
 
     //record blue eye interaction
     boyMeetings['blue-eyes'] = true
-    promptUser('Options: Leave gym, approach redhead, approach blue-eyes')
+    promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   'calm-guy': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       "Uhh hi. I'm Akaashi, have you seen a tall, spiky grey haired man at all? I’ve been looking all over."
@@ -183,7 +218,7 @@ const boy = {
     )
   },
   nerd: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'OH HI, I’m Kuroo! Now aren’t you pretty, but not as pretty as this periodic table. My favorite element is bromine, what is yours?'
@@ -194,7 +229,7 @@ const boy = {
     )
   },
   'grey-hairs': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       "Oh hello. My name's Osamu, and sorry you had to witness my idiot brother. I wanted him to try my onigiri, but he got distracted by the tuna. Would you like to try my onigiri?"
@@ -205,7 +240,7 @@ const boy = {
     )
   },
   blondy: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'Oh who are you? I am Atsumu, and if you want some of my fatty tuna, then you can’t have it!'
@@ -216,7 +251,7 @@ const boy = {
     )
   },
   'muscle-man': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'HEY HEY HEY! I am Bokuto, and can you help me shake this vending machine, my candy bar is stuck and I AM STARVING!'
@@ -227,7 +262,7 @@ const boy = {
     )
   },
   angel: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'Looks like we got a guest Iwa-chan. Hi there, people call me Oikawa, but you can call me tonight;)'
@@ -238,7 +273,7 @@ const boy = {
     )
   },
   'angels-friend': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'Hello I-<br>*The angel pushes his friend off to the side*<br>“HIIII I’M OIKAWA. You must be a fan...I’ll give you my autograph if you want, but you’ll have to get on your knees and beg”'
@@ -253,10 +288,10 @@ const boy = {
 //correct responses
 const correctresp = {
   'i love volleyball': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>AWESOME! U R PRETTY COOL! WE SHOULD HANG OUT SOME TIME<br>The boy skips away excited. Now where do you want to go?'
+      'AWESOME! U R PRETTY COOL! WE SHOULD HANG OUT SOME TIME<br>The boy skips away excited. Now where do you want to go?'
     )
 
     //increase rating
@@ -265,10 +300,10 @@ const correctresp = {
     promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   'i think i saw him in the lounge': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      "<br><br>Thank you so much. You're a lifesaver.<br>The boy walks off. Now where do you want to go?"
+      "Thank you so much. You're a lifesaver.<br>The boy walks off. Now where do you want to go?"
     )
 
     boyRatings['akaashi'] = 1
@@ -278,10 +313,10 @@ const correctresp = {
     )
   },
   'argon of course': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>WOAHHH You must be very NOBLE;)<br>The boy smiles and walks away. What do you want to do now?'
+      'WOAHHH You must be very NOBLE;)<br>The boy smiles and walks away. What do you want to do now?'
     )
 
     boyRatings['kuroo'] = 1
@@ -289,10 +324,10 @@ const correctresp = {
     promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   },
   'i would love some': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      "<br><br>Yes! Thank you so much. I'll go grab you some....oh actually it turns out that I ate them all already, but thanks anyways!<br>The boy walks away. What do you do?"
+      "Yes! Thank you so much. I'll go grab you some....oh actually it turns out that I ate them all already, but thanks anyways!<br>The boy walks away. What do you do?"
     )
 
     boyRatings['osamu'] = 1
@@ -302,10 +337,10 @@ const correctresp = {
     )
   },
   'i want more than just your fatty tuna': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>The boy raises his eyebrow at you, and smirks.<br>He walks away. Now what do you do?'
+      'The boy raises his eyebrow at you, and smirks.<br>He walks away. Now what do you do?'
     )
 
     boyRatings['atsumu'] = 1
@@ -315,10 +350,10 @@ const correctresp = {
     )
   },
   'of course lets do this': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>Thank you so much!! You are the best.<br>Together you two shake the machine, and his candy bar falls down. He hugs you, and walks away. What do you do?'
+      'Thank you so much!! You are the best.<br>Together you two shake the machine, and his candy bar falls down. He hugs you, and walks away. What do you do?'
     )
 
     boyRatings['bokuto'] = 1
@@ -326,10 +361,10 @@ const correctresp = {
     promptUser('<br>Options: Approach muscle-man, leave lounge')
   },
   'i thought they called you shittykawa': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      "<br><br>Ouu so mean, but it is okay because you're cute.<br>He turns away back to the mirror. Where do you want to go?"
+      "Ouu so mean, but it is okay because you're cute.<br>He turns away back to the mirror. Where do you want to go?"
     )
 
     boyRatings['oikawa'] = 1
@@ -339,10 +374,10 @@ const correctresp = {
     )
   },
   'anything you say...master': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>Woah woah...I think my nose bleeding.<br>He turns back to the mirror. What do you want to do?'
+      'Woah woah...I think my nose bleeding.<br>He turns back to the mirror. What do you want to do?'
     )
 
     boyRatings['oikawa'] = 1
@@ -352,10 +387,10 @@ const correctresp = {
     )
   },
   'in your wildest dreams': () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
-      '<br><br>Oikawa shrugs, and turns back to the mirror. What do you want to do?'
+      'Oikawa shrugs, and turns back to the mirror. What do you want to do?'
     )
 
     boyRatings['iwaizumi'] = 1
@@ -368,15 +403,19 @@ const correctresp = {
 
 const incorrectResp = {
   hinata: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>oh ok.<br>The boy walks away slowly, while shedding a tear. Now what do you want to do?'
+      'oh ok.<br>The boy walks away slowly, while shedding a tear. Now what do you want to do?'
     )
 
     promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   akaashi: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>*sigh* okay whatever. I gotta go.<br>The boy walks off. Where do you want to go?'
+      '*sigh* okay whatever. I gotta go.<br>The boy walks off. Where do you want to go?'
     )
 
     promptUser(
@@ -384,15 +423,19 @@ const incorrectResp = {
     )
   },
   kuroo: () => {
+    clearMsg();
+
     printMsg(
-      "<br><br>Interesting. Well I'm going to get back to my periodic table.<br>The boy turns away. How do you respond?"
+      "Interesting. Well I'm going to get back to my periodic table.<br>The boy turns away. How do you respond?"
     )
 
     promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   },
   osamu: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>oh fine.<br>The boy lowers his head and walks away. What do you do?'
+      'oh fine.<br>The boy lowers his head and walks away. What do you do?'
     )
 
     promptUser(
@@ -400,8 +443,10 @@ const incorrectResp = {
     )
   },
   atsumu: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>The boy rolls his eyes at you, and walks away. How do you respond?'
+      'The boy rolls his eyes at you, and walks away. How do you respond?'
     )
 
     promptUser(
@@ -409,15 +454,19 @@ const incorrectResp = {
     )
   },
   bokuto: () => {
+    clearMsg();
+
     printMsg(
-      "<br><br>oh sorry to bother you.<br>The boy's hair droops and his eyes sadden, as he walks away. What do you do?"
+      "oh sorry to bother you.<br>The boy's hair droops and his eyes sadden, as he walks away. What do you do?"
     )
 
     promptUser('<br>Options: Approach muscle-man, leave lounge')
   },
   oikawa: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>Oikawa shrugs, and turns back to the mirror. What do you want to do?'
+      'Oikawa shrugs, and turns back to the mirror. What do you want to do?'
     )
 
     promptUser(
@@ -425,8 +474,10 @@ const incorrectResp = {
     )
   },
   iwaizumi: () => {
+    clearMsg();
+
     printMsg(
-      '<br><br>You are kinda mean, but you can not replace my Iwa-chan! <br> He turns away. Where do you want to go next?'
+      'You are kinda mean, but you can not replace my Iwa-chan! <br> He turns away. Where do you want to go next?'
     )
 
     promptUser(
@@ -436,7 +487,7 @@ const incorrectResp = {
 }
 
 //store endings
-goodEndings = {
+var goodEndings = {
   hinata: () => {
     printMsg(
       '<br><br>OHH I would LOVE to accompany you to the prom, as long as we can play volleyball after the dance!'
@@ -493,7 +544,7 @@ goodEndings = {
 }
 
 //store bad endings
-badEndings = {
+var badEndings = {
   hinata: () => {
     printMsg("<br><br>Sorry I can't make it. I'll be playing volleyball.")
 
@@ -546,11 +597,6 @@ badEndings = {
 
     endGame('nobody')
   }
-}
-
-//end game
-function endGame (name) {
-  printMsg(`<br><br>Congratulations you ended with ${name}.\n\nTHE END.`)
 }
 
 //store boys and their raitings
@@ -607,14 +653,14 @@ function handleResp (resp) {
   //check if you have met all boys and that you are not already asking them out
   if (
     Object.values(boyMeetings).every(Boolean) !== false &&
-    resp.split(' ')[0] !== 'ask'
+    resp.split(' ')[0] !== 'ask' && resp.split(' ')[0] !== 'start' && resp.split(' ')[0] !== 'new' 
   ) {
     //clear messages
-    clearMsg();
+    clearMsg()
 
     //give user opportunity to ask
     printMsg(
-      '<br><br>Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?<br>'
+      'Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?<br>'
     )
 
     promptUser(
@@ -631,6 +677,8 @@ function handleResp (resp) {
       let verb = resp.split(' ')[0]
       let subject = resp.split(' ')[1]
 
+      console.log(verb, subject, resp)
+
       //call command if exist
       if (commands[verb]) {
         commands[verb](subject)
@@ -642,7 +690,7 @@ function handleResp (resp) {
 }
 
 function clearMsg (str) {
-  $("#messages").html("");
+  $('#messages').html('')
 }
 
 function printMsg (str) {
@@ -653,7 +701,6 @@ function printMsg (str) {
 
 //display button choices
 function promptUser (str) {
-  printMsg(str)
   str = str.split('Options: ')[1]
   str = str.split(',')
 
@@ -661,6 +708,8 @@ function promptUser (str) {
   for (let i = 1; i < str.length; i++) {
     str[i] = str[i].substring(1)
   }
+
+  console.log(str)
 
   //empty previous buttons
   $('#options').html('')
@@ -682,12 +731,24 @@ function promptUser (str) {
   }
 }
 
-//start game with opening
-printMsg(
-  'The prom is coming in 2 weeks, now you desperately need to find someone to accompany you. A tournament at Nekoma High just ended. Aoba Johsai High, Inarizaki High, Fukurodani  Academy, and Karasuno High were invited. After watching the tournament, you decided to find the #1 prom mate among all the boys.<br><br>YOU SEARCH THEM OUT.'
-)
-//start in gym
-Gamelocation.gym()
+function startGame () {
+  //start game with opening
+  printMsg(
+    'The prom is coming in 2 weeks, now you desperately need to find someone to accompany you. A tournament at Nekoma High just ended. Aoba Johsai High, Inarizaki High, Fukurodani  Academy, and Karasuno High were invited. After watching the tournament, you decided to find the #1 prom mate among all the boys.<br><br>YOU SEARCH THEM OUT.'
+  )
+
+  promptUser('<br>Options: start game')
+}
+
+//end game
+function endGame (name) {
+  printMsg(`<br><br>Congratulations you ended with ${name}.\n\nTHE END.`)
+
+  promptUser('<br>Options: new game')
+}
+
+//start game
+startGame();
 
 //make sure window dont automatically reload
 window.onbeforeunload = function () {
