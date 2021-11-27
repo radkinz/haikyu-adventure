@@ -72,7 +72,8 @@ const commands = {
       atsumu: 0,
       bokuto: 0,
       oikawa: 0,
-      iwaizumi: 0
+      iwaizumi: 0,
+      kenma: 0
     }
     
     boyMeetings = {
@@ -84,10 +85,10 @@ const commands = {
       blondy: false,
       'muscle-man': false,
       angel: false,
-      'angels-friend': false
+      'angels-friend': false,
+      gamer: false
     }
 
-    console.log("hello")
     Gamelocation.gym();
   },
 
@@ -221,7 +222,7 @@ const boy = {
     clearMsg()
 
     printMsg(
-      'OH HI, I’m Kuroo! Now aren’t you pretty, but not as pretty as this periodic table. My favorite element is bromine, what is yours?'
+      'OH HI, I’m Kuroo, and my friend with the games name is Kenma! Now aren’t you pretty, but not as pretty as this periodic table. My favorite element is bromine, what is yours?'
     )
 
     promptUser(
@@ -281,6 +282,17 @@ const boy = {
 
     promptUser(
       '<br>Options: Anything you say...master, you are so full of yourself, in your wildest dreams'
+    )
+  },
+  "gamer": () => {
+    clearMsg()
+
+    printMsg(
+      '*eyes you suspiciously up and down*'
+    )
+
+    promptUser(
+      '<br>Options: whatever geek, so you like video games?, theres a treasure chest on top of that roof'
     )
   }
 }
@@ -398,6 +410,19 @@ const correctresp = {
     promptUser(
       '<br>Options: Approach angel, approach angels-friend, leave bathroom'
     )
+  },
+  "theres a treasure chest on top of that roof": () => {
+    clearMsg()
+
+    printMsg(
+      '*nods approvingly*'
+    )
+
+    boyRatings['kenma'] = 1
+
+    promptUser(
+      '<br>Options: approach gamer, approach nerd, leave chemlab'
+    )
   }
 }
 
@@ -483,6 +508,15 @@ const incorrectResp = {
     promptUser(
       '<br>Options: Approach angel, approach angels-friend, leave bathroom'
     )
+  },
+  kenma: () => {
+    clearMsg();
+
+    printMsg(
+      '*shrugs*'
+    )
+
+    promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   }
 }
 
@@ -540,6 +574,11 @@ var goodEndings = {
     printMsg('<br><br>Sure, I need some time away from Shittykawa.')
 
     endGame('Iwaizumi')
+  },
+  kenma: () => {
+    printMsg('<br><br>okay.')
+
+    endGame('Kenma')
   }
 }
 
@@ -596,6 +635,11 @@ var badEndings = {
     printMsg('<br><br>No.')
 
     endGame('nobody')
+  },
+  kenma: () => {
+    printMsg('<br><br>*disappointing nod*')
+
+    endGame('nobody')
   }
 }
 
@@ -609,7 +653,8 @@ var boyRatings = {
   atsumu: 0,
   bokuto: 0,
   oikawa: 0,
-  iwaizumi: 0
+  iwaizumi: 0,
+  kenma: 0
 }
 
 //store if you have met all the boys
@@ -622,7 +667,8 @@ var boyMeetings = {
   blondy: false,
   'muscle-man': false,
   angel: false,
-  'angels-friend': false
+  'angels-friend': false,
+  gamer: false
 }
 
 var incorrectRespAns = {
@@ -640,10 +686,12 @@ var incorrectRespAns = {
   'gold because i am expensive': 'kuroo',
   'who is that': 'akaashi',
   'yea he is in the dining hall': 'akaashi',
-  'I am not going to tell you': 'akaashi',
+  'i am not going to tell you': 'akaashi',
   'he is in the chem lab': 'akaashi',
   'volleyball is for sweaty jocks': 'hinata',
-  meh: 'hinata'
+  meh: 'hinata',
+  "whatever geek": 'kenma', 
+  "so you like video games?":'kenma'
 }
 
 //prompt user function
@@ -651,6 +699,7 @@ function handleResp (resp) {
   //quickly clean resp
   resp = resp.toLowerCase()
   //check if you have met all boys and that you are not already asking them out
+  console.log(resp)
   if (
     Object.values(boyMeetings).every(Boolean) !== false &&
     resp.split(' ')[0] !== 'ask' && resp.split(' ')[0] !== 'start' && resp.split(' ')[0] !== 'new' 
@@ -664,7 +713,7 @@ function handleResp (resp) {
     )
 
     promptUser(
-      '<br>Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi'
+      '<br>Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask kenma, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi'
     )
   } else {
     //first check if message matches a correct resp
