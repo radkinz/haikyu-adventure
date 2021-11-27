@@ -709,11 +709,11 @@ function handleResp (resp) {
 
     //give user opportunity to ask
     printMsg(
-      'Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?<br>'
+      'Now that you have met all the boys, you can ask one of them to prom! Who do you want to ask?'
     )
 
     promptUser(
-      '<br>Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask kenma, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi'
+      '<br><br>Options: ask hinata, ask blue-eyes, ask akaashi, ask kuroo, ask kenma, ask osamu, ask atsumu, ask bokuto, ask oikawa, ask iwaizumi'
     )
   } else {
     //first check if message matches a correct resp
@@ -791,7 +791,7 @@ function startGame () {
 
 //end game
 function endGame (name) {
-  printMsg(`<br><br>Congratulations you ended with ${name}.\n\nTHE END.`)
+  printMsg(`<br><br>Congratulations you ended with ${name}. THE END.`)
 
   promptUser('<br>Options: new game')
 }
