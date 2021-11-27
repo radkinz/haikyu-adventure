@@ -717,7 +717,7 @@ function promptUser (str) {
   //display button options
   for (let i = 0; i < str.length; i++) {
     //add new buttons
-    $('#options').append(`<button>${str[i]}</button>`)
+    $('#options').append(`<div><button>${str[i]}</button></div>`)
   }
 
   //set event listners

@@ -14,17 +14,34 @@ h1 {
 #messages {
     color: white;
     font-family: 'Outfit', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     width: 50%;
     overflow-x: break-word;
 }
 
 #options {
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     width: 25%;
-    min-height: 100px;
-    max-height: 100px;
+}
+
+#options button {
+    text-align: center;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1000px) {
+    h1 {
+        font-size: 40px;
+    }
+    
+    #messages {
+        width: 90%;
+    }
+    
+    #options button {
+        font-size: 15px;
+    }
 }
