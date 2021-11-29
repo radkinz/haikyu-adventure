@@ -357,7 +357,7 @@ const correctresp = {
   'i think i saw him in the lounge': () => {
     clearMsg()
 
-    $("#image").attr("src", "images/akaashihappy.jpg");
+    $("#image").attr("src", "images/akaashisad.png");
 
     printMsg(
       "Thank you so much. You're a lifesaver.<br>The boy walks off. Now where do you want to go?"
@@ -727,7 +727,7 @@ var badEndings = {
       "<br><br>I- Uh I- Uh I can't go. Sorry! I have to take care of my owl."
     )
 
-    $("#image").attr("src", "images/bokutofinalbad.jpg");
+    $("#image").attr("src", "images/bokutofinalend.jpg");
 
     endGame('nobody')
   },
