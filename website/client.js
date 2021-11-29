@@ -129,6 +129,8 @@ const Gamelocation = {
   lounge: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/lounge.jpg");
+
     printMsg(
       'You walk down a hallway and approach the student lounge door. You reach for the handle but hear some noises coming from inside. <br><br> *Bang* *Bang* <br><br> The sound of someone banging on metal rattles through your ears. You take a deep breath, and walk inside. You encounter a tall, thick male, who has golden-colored eyes and spiky white-grey hair with black streaks. He is banging on the vending machine with a look of despair washed over his face. It appears his candy bar is stuck, and he is trying to forcefully remove it. What do you want to do?<br>'
     )
@@ -136,7 +138,7 @@ const Gamelocation = {
     promptUser('Options: Approach muscle-man, leave lounge')
   },
   loungeExit: () => {
-    return ['the cafeteria', 'the gym', 'the student lounge']
+    return ['the cafeteria', 'the gym', 'the student lounge', 'images/studentlounge.png']
   },
   hallway: () => {
     clearMsg()
@@ -156,6 +158,8 @@ const Gamelocation = {
   chemlab: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/chemlab.png");
+
     //send msg
     printMsg(
       'You ignore and pass the back-hair student, and continue walking down the hallway. You enter the chemistry room. Two Nekoma students in their uniforms are inside. One with dyed yellow hair is playing a video game, while curled up in the corner like a cat. The other is a tall student with black hair nearly covering his left eye, who appears to be admiring the periodic table. How will you react?'
@@ -165,10 +169,12 @@ const Gamelocation = {
     promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   },
   chemlabExit: () => {
-    return ['a hallway', 'the cafeteria', 'chemlab']
+    return ['a hallway', 'the cafeteria', 'chemlab', 'images/chemlabbackground.jpg']
   },
   cafeteria: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/cafeteria.jpg");
 
     //send msg
     printMsg(
@@ -181,7 +187,7 @@ const Gamelocation = {
     )
   },
   cafeteriaExit: () => {
-    return ['lounge', 'chemlab', 'cafeteria']
+    return ['lounge', 'chemlab', 'cafeteria', 'images/cafeteriabackground.jpg']
   },
   bathroom: () => {
     clearMsg()
@@ -197,7 +203,7 @@ const Gamelocation = {
     )
   },
   bathroomExit: () => {
-    return ['hallway', 'gym', 'bathroom']
+    return ['hallway', 'gym', 'bathroom', "images/bathroombackground.jpg"]
   }
 }
 
@@ -243,6 +249,8 @@ const boy = {
   nerd: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/kuroo.gif");
+
     printMsg(
       'OH HI, I’m Kuroo, and my friend with the games name is Kenma! Now aren’t you pretty, but not as pretty as this periodic table. My favorite element is bromine, what is yours?'
     )
@@ -254,6 +262,8 @@ const boy = {
   'grey-hairs': () => {
     clearMsg()
 
+    $("#image").attr("src", "images/osamu.jpg");
+
     printMsg(
       "Oh hello. My name's Osamu, and sorry you had to witness my idiot brother. I wanted him to try my onigiri, but he got distracted by the tuna. Would you like to try my onigiri?"
     )
@@ -264,6 +274,8 @@ const boy = {
   },
   blondy: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/atsumu.jpg");
 
     printMsg(
       'Oh who are you? I am Atsumu, and if you want some of my fatty tuna, then you can’t have it!'
@@ -279,6 +291,8 @@ const boy = {
     printMsg(
       'HEY HEY HEY! I am Bokuto, and can you help me shake this vending machine, my candy bar is stuck and I AM STARVING!'
     )
+
+    $("#image").attr("src", "images/bokuto.gif");
 
     promptUser(
       '<br>Options: Of course LETS DO THIS, if you are hungry then go to the cafeteria, no'
@@ -312,6 +326,8 @@ const boy = {
   },
   gamer: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/kenma.jpg");
 
     printMsg('*eyes you suspiciously up and down*')
 
@@ -355,6 +371,8 @@ const correctresp = {
   'argon of course': () => {
     clearMsg()
 
+    $("#image").attr("src", "images/kuroohappy.gif");
+
     printMsg(
       'WOAHHH You must be very NOBLE;)<br>The boy smiles and walks away. What do you want to do now?'
     )
@@ -365,6 +383,8 @@ const correctresp = {
   },
   'i would love some': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/osamuhappy.jpg");
 
     printMsg(
       "Yes! Thank you so much. I'll go grab you some....oh actually it turns out that I ate them all already, but thanks anyways!<br>The boy walks away. What do you do?"
@@ -378,6 +398,8 @@ const correctresp = {
   },
   'i want more than just your fatty tuna': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/atsumuhappy.jpg");
 
     printMsg(
       'The boy raises his eyebrow at you, and smirks.<br>He walks away. Now what do you do?'
@@ -396,6 +418,8 @@ const correctresp = {
       'Thank you so much!! You are the best.<br>Together you two shake the machine, and his candy bar falls down. He hugs you, and walks away. What do you do?'
     )
 
+    $("#image").attr("src", "images/bokutohappy.gif");
+
     boyRatings['bokuto'] = 1
 
     promptUser('<br>Options: Approach muscle-man, leave lounge')
@@ -407,6 +431,8 @@ const correctresp = {
       "Ouu so mean, but it is okay because you're cute.<br>He turns away back to the mirror. Where do you want to go?"
     )
 
+    $("#image").attr("src", "images/oikawahappy.gif");
+
     boyRatings['oikawa'] = 1
 
     promptUser(
@@ -415,6 +441,8 @@ const correctresp = {
   },
   'anything you say...master': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/oikawasmirk.gif");
 
     printMsg(
       'Woah woah...I think my nose bleeding.<br>He turns back to the mirror. What do you want to do?'
@@ -429,6 +457,8 @@ const correctresp = {
   'in your wildest dreams': () => {
     clearMsg()
 
+    $("#image").attr("src", "images/oikawasad.gif");
+
     printMsg(
       'Oikawa shrugs, and turns back to the mirror. What do you want to do?'
     )
@@ -441,6 +471,8 @@ const correctresp = {
   },
   'theres a treasure chest on top of that roof': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/kenmahappy.jpg");
 
     printMsg('*nods approvingly*')
 
@@ -478,6 +510,8 @@ const incorrectResp = {
   kuroo: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/kuroomad.gif");
+
     printMsg(
       "Interesting. Well I'm going to get back to my periodic table.<br>The boy turns away. How do you respond?"
     )
@@ -486,6 +520,8 @@ const incorrectResp = {
   },
   osamu: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/osamumad.jpg");
 
     printMsg(
       'oh fine.<br>The boy lowers his head and walks away. What do you do?'
@@ -498,6 +534,8 @@ const incorrectResp = {
   atsumu: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/atsumumad.jpg");
+
     printMsg(
       'The boy rolls his eyes at you, and walks away. How do you respond?'
     )
@@ -509,6 +547,8 @@ const incorrectResp = {
   bokuto: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/bokutosad.jpg");
+
     printMsg(
       "oh sorry to bother you.<br>The boy's hair droops and his eyes sadden, as he walks away. What do you do?"
     )
@@ -517,6 +557,8 @@ const incorrectResp = {
   },
   oikawa: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/oikawamad.jpg");
 
     printMsg(
       'Oikawa shrugs, and turns back to the mirror. What do you want to do?'
@@ -529,6 +571,8 @@ const incorrectResp = {
   iwaizumi: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/iwaizumimad.gif");
+
     printMsg(
       'You are kinda mean, but you can not replace my Iwa-chan! <br> He turns away. Where do you want to go next?'
     )
@@ -539,6 +583,8 @@ const incorrectResp = {
   },
   kenma: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/kenmamad.gif");
 
     printMsg('*shrugs*')
 
