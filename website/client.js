@@ -59,9 +59,10 @@ const commands = {
     } else {
       printMsg('Please choose one of the valid options<br>')
     }
-  }, 
+  },
 
   start: () => {
+    clearMsg();
     //reset values
     boyRatings = {
       hinata: 0,
@@ -75,7 +76,7 @@ const commands = {
       iwaizumi: 0,
       kenma: 0
     }
-    
+
     boyMeetings = {
       redhead: false,
       'blue-eyes': false,
@@ -89,12 +90,17 @@ const commands = {
       gamer: false
     }
 
-    Gamelocation.gym();
+    openGame();
   },
 
   new: () => {
+    clearMsg()
+    startGame()
+  },
+
+  begin: () => {
     clearMsg();
-    startGame();
+    Gamelocation.gym()
   }
 }
 
@@ -284,12 +290,10 @@ const boy = {
       '<br>Options: Anything you say...master, you are so full of yourself, in your wildest dreams'
     )
   },
-  "gamer": () => {
+  gamer: () => {
     clearMsg()
 
-    printMsg(
-      '*eyes you suspiciously up and down*'
-    )
+    printMsg('*eyes you suspiciously up and down*')
 
     promptUser(
       '<br>Options: whatever geek, so you like video games?, theres a treasure chest on top of that roof'
@@ -411,24 +415,20 @@ const correctresp = {
       '<br>Options: Approach angel, approach angels-friend, leave bathroom'
     )
   },
-  "theres a treasure chest on top of that roof": () => {
+  'theres a treasure chest on top of that roof': () => {
     clearMsg()
 
-    printMsg(
-      '*nods approvingly*'
-    )
+    printMsg('*nods approvingly*')
 
     boyRatings['kenma'] = 1
 
-    promptUser(
-      '<br>Options: approach gamer, approach nerd, leave chemlab'
-    )
+    promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   }
 }
 
 const incorrectResp = {
   hinata: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'oh ok.<br>The boy walks away slowly, while shedding a tear. Now what do you want to do?'
@@ -437,7 +437,7 @@ const incorrectResp = {
     promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   akaashi: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       '*sigh* okay whatever. I gotta go.<br>The boy walks off. Where do you want to go?'
@@ -448,7 +448,7 @@ const incorrectResp = {
     )
   },
   kuroo: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       "Interesting. Well I'm going to get back to my periodic table.<br>The boy turns away. How do you respond?"
@@ -457,7 +457,7 @@ const incorrectResp = {
     promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   },
   osamu: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'oh fine.<br>The boy lowers his head and walks away. What do you do?'
@@ -468,7 +468,7 @@ const incorrectResp = {
     )
   },
   atsumu: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'The boy rolls his eyes at you, and walks away. How do you respond?'
@@ -479,7 +479,7 @@ const incorrectResp = {
     )
   },
   bokuto: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       "oh sorry to bother you.<br>The boy's hair droops and his eyes sadden, as he walks away. What do you do?"
@@ -488,7 +488,7 @@ const incorrectResp = {
     promptUser('<br>Options: Approach muscle-man, leave lounge')
   },
   oikawa: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'Oikawa shrugs, and turns back to the mirror. What do you want to do?'
@@ -499,7 +499,7 @@ const incorrectResp = {
     )
   },
   iwaizumi: () => {
-    clearMsg();
+    clearMsg()
 
     printMsg(
       'You are kinda mean, but you can not replace my Iwa-chan! <br> He turns away. Where do you want to go next?'
@@ -510,11 +510,9 @@ const incorrectResp = {
     )
   },
   kenma: () => {
-    clearMsg();
+    clearMsg()
 
-    printMsg(
-      '*shrugs*'
-    )
+    printMsg('*shrugs*')
 
     promptUser('<br>Options: approach gamer, approach nerd, leave chemlab')
   }
@@ -690,8 +688,8 @@ var incorrectRespAns = {
   'he is in the chem lab': 'akaashi',
   'volleyball is for sweaty jocks': 'hinata',
   meh: 'hinata',
-  "whatever geek": 'kenma', 
-  "so you like video games?":'kenma'
+  'whatever geek': 'kenma',
+  'so you like video games?': 'kenma'
 }
 
 //prompt user function
@@ -699,10 +697,11 @@ function handleResp (resp) {
   //quickly clean resp
   resp = resp.toLowerCase()
   //check if you have met all boys and that you are not already asking them out
-  console.log(resp)
   if (
     Object.values(boyMeetings).every(Boolean) !== false &&
-    resp.split(' ')[0] !== 'ask' && resp.split(' ')[0] !== 'start' && resp.split(' ')[0] !== 'new' 
+    resp.split(' ')[0] !== 'ask' &&
+    resp.split(' ')[0] !== 'start' &&
+    resp.split(' ')[0] !== 'new'
   ) {
     //clear messages
     clearMsg()
@@ -758,8 +757,6 @@ function promptUser (str) {
     str[i] = str[i].substring(1)
   }
 
-  console.log(str)
-
   //empty previous buttons
   $('#options').html('')
 
@@ -780,13 +777,32 @@ function promptUser (str) {
   }
 }
 
-function startGame () {
+function openGame () {
+  //undo text align
+  $("#messages").css("text-align", "left"); 
+  $("#options").css("text-align", "left");
+  $("#options").css("display", "");
+  
+  //change image
+  $("#image").attr("src", "images/tournament.jpg");
+
   //start game with opening
   printMsg(
     'The prom is coming in 2 weeks, now you desperately need to find someone to accompany you. A tournament at Nekoma High just ended. Aoba Johsai High, Inarizaki High, Fukurodani  Academy, and Karasuno High were invited. After watching the tournament, you decided to find the #1 prom mate among all the boys.<br><br>YOU SEARCH THEM OUT.'
   )
 
-  promptUser('<br>Options: start game')
+  promptUser('<br>Options: begin');
+}
+
+function startGame () {
+  //center text
+  $("#messages").css("text-align", "center"); 
+  $("#options").css("text-align", "center");
+  $("#options").css("display", "inline");
+
+  printMsg(`Would you like to start the game? ;)`);
+
+  promptUser('<br>Options: start game');
 }
 
 //end game
@@ -797,7 +813,7 @@ function endGame (name) {
 }
 
 //start game
-startGame();
+startGame()
 
 //make sure window dont automatically reload
 window.onbeforeunload = function () {
