@@ -66,6 +66,7 @@ const commands = {
 
   start: () => {
     clearMsg();
+
     //reset values
     boyRatings = {
       hinata: 0,
@@ -599,6 +600,8 @@ var goodEndings = {
       '<br><br>OHH I would LOVE to accompany you to the prom, as long as we can play volleyball after the dance!'
     )
 
+    $("#image").attr("src", "images/hinatafinal.jpg");
+
     //call end game function
     endGame('Hinata')
   },
@@ -607,12 +610,16 @@ var goodEndings = {
       "<br><br>Hmm I don't mind attending with you. You're really nice, so I'm sure it will be a lot of fun."
     )
 
+    $("#image").attr("src", "images/akaashifinal.jpg");
+
     endGame('Akaashi')
   },
   kuroo: () => {
     printMsg(
       '<br><br>OMG OF COURSE! I AM SO GLAD YOU ASKED! I WOULD LOVE TO ACCOMPANY YOU;)'
     )
+
+    $("#image").attr("src", "images/kuroo final.jpg");
 
     endGame('Kuroo')
   },
@@ -621,10 +628,14 @@ var goodEndings = {
       "<br><br>Sounds like fun! I'll make onigiri for us to eat beforehand."
     )
 
+    $("#image").attr("src", "images/osamufinal.jpg");
+
     endGame('Osamu')
   },
   atsumu: () => {
-    printMsg('<br><br>Sure pretty thang;)')
+    printMsg('<br><br>Sure pretty thang;)');
+
+    $("#image").attr("src", "images/atsumufinal.jpg");
 
     endGame('Atsumu')
   },
@@ -633,6 +644,8 @@ var goodEndings = {
       '<br><br>OMG OMG OMG YOU REALLY WANT TO GO WITH ME?!?!?! HOW COULD I NOT SAY NO? YES YES YES YESSSSS!!!!'
     )
 
+    $("#image").attr("src", "images/bokutofinal.png");
+
     endGame('Bokuto')
   },
   oikawa: () => {
@@ -640,15 +653,21 @@ var goodEndings = {
       "<br><br>Can't say I wasn't expecting this, but sure. You look like you could be some fun, but remenber no pictures can include my bad side. JK I have no bad side;)"
     )
 
+    $("#image").attr("src", "images/oikawafinal.jpg");
+
     endGame('Oikawa')
   },
   iwaizumi: () => {
-    printMsg('<br><br>Sure, I need some time away from Shittykawa.')
+    printMsg('<br><br>Sure, I need some time away from Shittykawa.');
+
+    $("#image").attr("src", "images/iwaizumifinal.jpg");
 
     endGame('Iwaizumi')
   },
   kenma: () => {
-    printMsg('<br><br>okay.')
+    printMsg('<br><br>okay.');
+
+    $("#image").attr("src", "images/kenmafinal.jpg");
 
     endGame('Kenma')
   }
@@ -659,16 +678,22 @@ var badEndings = {
   hinata: () => {
     printMsg("<br><br>Sorry I can't make it. I'll be playing volleyball.")
 
+    $("#image").attr("src", "images/hinatafinalbad.jpg");
+
     //call end game function
     endGame('nobody')
   },
   'blue-eyes': () => {
     printMsg('<br><br>...')
 
+    $("#image").attr("src", "images/kageyamafinalbad.jpg");
+
     endGame('nobody')
   },
   akaashi: () => {
     printMsg('<br><br>Thanks for asking, but I am unable to attend.')
+
+    $("#image").attr("src", "images/akaashifinalbad.jpg");
 
     endGame('nobody')
   },
@@ -677,10 +702,14 @@ var badEndings = {
       '<br><br>Oh shoot! I already planned to do an acid-base titration that day. Bummer!'
     )
 
+    $("#image").attr("src", "images/kuroofinalbad.jpg");
+
     endGame('nobody')
   },
   osamu: () => {
     printMsg('<br><br>I am flattered, but no.')
+
+    $("#image").attr("src", "images/osamufinalbad.gif");
 
     endGame('nobody')
   },
@@ -689,6 +718,8 @@ var badEndings = {
       '<br><br>BAHAHAHA you think I would go to prom with you?! Never in a million years!'
     )
 
+    $("#image").attr("src", "images/atsumufinalbad.jpg");
+
     endGame('nobody')
   },
   bokuto: () => {
@@ -696,20 +727,28 @@ var badEndings = {
       "<br><br>I- Uh I- Uh I can't go. Sorry! I have to take care of my owl."
     )
 
+    $("#image").attr("src", "images/bokutofinalbad.jpg");
+
     endGame('nobody')
   },
   oikawa: () => {
-    printMsg('<br><br>Hmmm okay, as long as we can bring Iwa-chan as well!!')
+    printMsg('<br><br>Hmmm okay, as long as we can bring Iwa-chan as well!!');
+
+    $("#image").attr("src", "images/oikawafinalbad.jpg");
 
     endGame('nobody')
   },
   iwaizumi: () => {
     printMsg('<br><br>No.')
 
+    $("#image").attr("src", "images/iwaizumifinalbad.jpg");
+
     endGame('nobody')
   },
   kenma: () => {
     printMsg('<br><br>*disappointing nod*')
+
+    $("#image").attr("src", "images/kenmafinalbad.jpg");
 
     endGame('nobody')
   }
@@ -873,6 +912,8 @@ function startGame () {
   $("#messages").css("text-align", "center"); 
   $("#options").css("text-align", "center");
   $("#options").css("display", "inline");
+
+  $("#image").attr("src", "images/beach.jpg");
 
   printMsg(`Would you like to start the game? ;)`);
 
