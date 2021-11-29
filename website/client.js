@@ -21,6 +21,9 @@ const commands = {
           exits[2].split(' ')[exits[2].split(' ').length - 1]
         }`
       )
+
+      //change image
+      $("#image").attr("src", exits[3]);
     } else {
       printMsg('Please choose one of the valid options<br>')
     }
@@ -109,6 +112,9 @@ const Gamelocation = {
   gym: function () {
     clearMsg()
 
+    //change img
+    $("#image").attr("src", "images/gym.gif");
+
     //send msg
     printMsg(
       'You are now at the gym. You spot a small but adorable little redhead highschool student in the corner. Next to him stands a tall, blue-eyed highschool student. <br>Who do you approach? <br>'
@@ -118,7 +124,7 @@ const Gamelocation = {
     promptUser('Options: Leave gym, approach redhead, approach blue-eyes')
   },
   gymExit: function () {
-    return ['a hallway', 'the student lounge', 'gym']
+    return ['a hallway', 'the student lounge', 'gym', 'images/widegymview.jpg']
   },
   lounge: () => {
     clearMsg()
@@ -135,9 +141,11 @@ const Gamelocation = {
   hallway: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/hallway.png");
+
     //send msg
     printMsg(
-      'You are now in the hallway, to your right is the bathroom. In the end of the hallway you see a chemistry room, and the door is ajar. You spot a calm, slim figure walking up ahead. There is sweat on his brow, and he seems to be looking for something. Do you want to approach him?'
+      'You are now in the hallway, to your left is the bathroom. In the end of the hallway you see a chemistry room, and the door is ajar. You spot a calm, slim figure walking up ahead. There is sweat on his brow, and he seems to be looking for something. Do you want to approach him?'
     )
 
     //prompt user for anwser
@@ -178,6 +186,8 @@ const Gamelocation = {
   bathroom: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/bathroom.gif");
+
     printMsg(
       'You walk into the bathroom, so you can wash your hands and check your face. Have to make sure you look your best when searching for a future partner. You walk in and encounter two high school boys. They are both tall but one has brown curly hair with the complexion of an angel. The other has spiky hair and a visage of pure anger. The two students from Aoba Johsai are bickering:<br><br>“Shittykawa, stop looking at yourself in the mirror!”<br>“Silly Iwa-chan, perfection takes time!”<br><br>You overhear part of their conversation, but they stop abruptly when you walk in. They turn and look at you. What do you do?'
     )
@@ -196,6 +206,8 @@ const boy = {
   redhead: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/hinata.jpg");
+
     printMsg(
       "HI THERE I'M HINATA SHOYO. I LOVE VOLLEYBALL…..do YOUUU like volleyball?"
     )
@@ -207,6 +219,8 @@ const boy = {
   'blue-eyes': () => {
     clearMsg()
 
+    $("#image").attr("src", "images/kageyama.jpg");
+
     printMsg('... <br> He walks away. How do you respond?')
 
     //record blue eye interaction
@@ -215,6 +229,8 @@ const boy = {
   },
   'calm-guy': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/akaashi.jpg");
 
     printMsg(
       "Uhh hi. I'm Akaashi, have you seen a tall, spiky grey haired man at all? I’ve been looking all over."
@@ -271,6 +287,8 @@ const boy = {
   angel: () => {
     clearMsg()
 
+    $("#image").attr("src", "images/oikawa.gif");
+
     printMsg(
       'Looks like we got a guest Iwa-chan. Hi there, people call me Oikawa, but you can call me tonight;)'
     )
@@ -281,6 +299,8 @@ const boy = {
   },
   'angels-friend': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/iwaizumi.jpg");
 
     printMsg(
       'Hello I-<br>*The angel pushes his friend off to the side*<br>“HIIII I’M OIKAWA. You must be a fan...I’ll give you my autograph if you want, but you’ll have to get on your knees and beg”'
@@ -313,10 +333,14 @@ const correctresp = {
     //increase rating
     boyRatings['hinata'] = 1
 
+    $("#image").attr("src", "images/happyhinata.gif");
+
     promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   'i think i saw him in the lounge': () => {
     clearMsg()
+
+    $("#image").attr("src", "images/akaashihappy.jpg");
 
     printMsg(
       "Thank you so much. You're a lifesaver.<br>The boy walks off. Now where do you want to go?"
@@ -434,10 +458,14 @@ const incorrectResp = {
       'oh ok.<br>The boy walks away slowly, while shedding a tear. Now what do you want to do?'
     )
 
+    $("#image").attr("src", "images/sadhinata.gif");
+
     promptUser('<br>Options: Leave gym, approach redhead, approach blue-eyes')
   },
   akaashi: () => {
     clearMsg()
+
+    $("#image").attr("src", "images/akaashisad.png");
 
     printMsg(
       '*sigh* okay whatever. I gotta go.<br>The boy walks off. Where do you want to go?'
