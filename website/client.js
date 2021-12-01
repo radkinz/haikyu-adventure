@@ -357,7 +357,7 @@ const correctresp = {
   'i think i saw him in the lounge': () => {
     clearMsg()
 
-    $("#image").attr("src", "images/akaashisad.png");
+    $("#image").attr("src", "images/akaashihappy.jpg");
 
     printMsg(
       "Thank you so much. You're a lifesaver.<br>The boy walks off. Now where do you want to go?"
